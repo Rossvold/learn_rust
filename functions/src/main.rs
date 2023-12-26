@@ -25,7 +25,7 @@ fn print_labeled_measurement(value: i32, unit_label: char) {
 /// ```
 fn five() -> i32 {
     //statement, not an expression
-   let x = 5; 
+   let x = 100; 
    //expression
    x
 }

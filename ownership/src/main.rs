@@ -1,3 +1,33 @@
 fn main() {
-    println!("Hello, world!");
+    let s1 = gives_ownership();         // gives_ownership moves its return
+    println!("{}", s1);                 // value into s1
+
+    let s2 = String::from("hello");     // s2 comes into scope
+
+    let s3 = takes_and_gives_back(s2);  // s2 is moved into
+    println!("{} from fn main", s3);
+
+    let mut string = String::from("hello");
+    string.push_str(", world!");
+    
+                                         // takes_and_gives_back, which also
+                                         // moves its return value into s3
+} // Here, s3 goes out of scope and is dropped. s2 was moved, so nothing
+  // happens. s1 goes out of scope and is dropped.
+
+fn gives_ownership() -> String {             // gives_ownership will move its
+                                             // return value into the function
+                                             // that calls it
+    let some_string = String::from("yours"); // some_string comes into scope
+
+    //last expression is returned
+    some_string                              // some_string is returned and
+}
+
+// This function takes a String and returns one
+fn takes_and_gives_back(a_string: String) -> String { // a_string comes into
+    println!("{} from function takes_and_gives_back", a_string);
+                                                      
+                                                      // scope
+    a_string  // a_string is returned and moves out to the calling function
 }
